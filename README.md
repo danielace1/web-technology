@@ -7,19 +7,19 @@ This repository contains various projects and experiments related to web technol
 ### Ex-1: Image Mapping Using HTML
 
 - _1.3_ : Solar System - Image Map
-  - Link: [View](./Ex-1/1.3/)
+  - Link: [View](./ex-1/1.3/)
   - Live : [Live](https://cs23students.github.io/web-technology/ex-1/1.3/)
 
 - _1.4_ : Computer System Components - Image Map
-  - Link: [View](./Ex-1/1.4/)
+  - Link: [View](./ex-1/1.4/)
   - Live : [Live](https://cs23students.github.io/web-technology/ex-1/1.4/)
 
 ### Ex-2: Creating Web Page with All Types of Cascading Style Sheets
 
 - _2.3_ : Responsive Restaurant Web Page
-  - Link: [View](./Ex-2/2.3/)
+  - Link: [View](./ex-2/2.3/)
   - Live : [Live](https://cs23students.github.io/web-technology/ex-2/2.3/)
 
 - _2.4_ : Responsive Travel Blog Web Page
-  - Link: [View](./Ex-2/2.4/)
+  - Link: [View](./ex-2/2.4/)
   - Live : [Live](https://cs23students.github.io/web-technology/ex-2/2.4/)
