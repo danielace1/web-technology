@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Event Registration Form</h2>
+
+      <form id="registrationForm">
+        <!-- Attendee Info -->
+        <label>Full Name</label>
+        <input type="text" id="name" required />
+
+        <label>Email</label>
+        <input type="email" id="email" required />
+
+        <label>Age</label>
+        <input type="number" id="age" min="1" required />
+
+        <!-- Sessions -->
+        <label>Select Sessions</label>
+        <div class="sessions">
+          <label>
+            <input
+              type="checkbox"
+              data-cost="500"
+              data-age="18"
+              data-time="10-12"
+            />
+            Technical Workshop (10AM–12PM, ₹500, 18+)
+          </label>
+
+          <label>
+            <input type="checkbox" data-cost="400" data-time="10-12" />
+            Design Seminar (10AM–12PM, ₹400)
+          </label>
+
+          <label>
+            <input type="checkbox" data-cost="300" data-time="14-16" />
+            Marketing Talk (2PM–4PM, ₹300)
+          </label>
+        </div>
+
+        <!-- Special Requirements -->
+        <label>Special Requirements</label>
+        <textarea rows="3" placeholder="Food, accessibility, etc."></textarea>
+
+        <div class="total">Total Cost: ₹<span id="totalCost">0</span></div>
+
+        <button type="button" class="add-btn" onclick="addAttendee()">
+          Add Attendee
+        </button>
+
+        <button type="submit" class="submit-btn">Submit Registration</button>
+
+        <p class="note">
+          * Time conflicts and duplicate emails are automatically prevented.
+        </p>
+      </form>
+
+      <div id="output" class="output" style="display: none">
+        <h3>Registration Details</h3>
+        <div id="outputContent"></div>
+      </div>
+    </div>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
