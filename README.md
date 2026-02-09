@@ -31,3 +31,9 @@ This repository contains various projects and experiments related to web technol
 - _2.5_ : Portfolio Website
   - Link: [View](./ex-2/2.5/)
   - Live : [Live](https://cs23students.github.io/web-technology/ex-2/2.5/)
+
+### Ex-3: Client Side Scripts for Validating Web Form Controls using DHTML
+
+- _3.4_ : Event Registration Form using DHTML and JavaScript
+  - Link: [View](./ex-3/3.4/)
+  - Live : [Live](https://cs23students.github.io/web-technology/ex-3/3.4/)
