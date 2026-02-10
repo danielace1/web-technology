@@ -15,37 +15,25 @@
       <form id="registrationForm">
         <!-- Attendee Info -->
         <label>Full Name</label>
-        <input type="text" id="name" required />
+        <input type="text" id="name" />
 
         <label>Email</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" />
 
         <label>Age</label>
-        <input type="number" id="age" min="1" required />
+        <input type="number" id="age" min="1" />
+
+        <label>Select Event</label>
+        <select id="eventSelect" onchange="loadSessions()">
+          <option value="">-- Choose Event --</option>
+          <option value="technical">Technical Event</option>
+          <option value="cultural">Cultural Event</option>
+          <option value="sports">Sports Event</option>
+        </select>
 
         <!-- Sessions -->
         <label>Select Sessions</label>
-        <div class="sessions">
-          <label>
-            <input
-              type="checkbox"
-              data-cost="500"
-              data-age="18"
-              data-time="10-12"
-            />
-            Technical Workshop (10AM–12PM, ₹500, 18+)
-          </label>
-
-          <label>
-            <input type="checkbox" data-cost="400" data-time="10-12" />
-            Design Seminar (10AM–12PM, ₹400)
-          </label>
-
-          <label>
-            <input type="checkbox" data-cost="300" data-time="14-16" />
-            Marketing Talk (2PM–4PM, ₹300)
-          </label>
-        </div>
+        <div class="sessions" id="sessionsContainer"></div>
 
         <!-- Special Requirements -->
         <label>Special Requirements</label>

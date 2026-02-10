@@ -88,6 +88,20 @@ button:hover {
   opacity: 0.9;
 }
 
+select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Disabled / default option look */
+select option[value=""] {
+  color: #6c757d;
+}
+
 .note {
   font-size: 13px;
   color: #6c757d;
