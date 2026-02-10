@@ -1,25 +1,71 @@
+const eventData = {
+  technical: [
+    {
+      name: "Technical Workshop",
+      cost: 500,
+      time: "10:00 AM-12:00 PM",
+      age: 18,
+    },
+    { name: "Design Seminar", cost: 400, time: "10:00 AM-12:00 PM" },
+    { name: "Marketing Talk", cost: 300, time: "2:00 PM-4:00 PM" },
+  ],
+  cultural: [
+    { name: "Dance Program", cost: 200, time: "10:00 AM-12:00 PM" },
+    { name: "Music Show", cost: 300, time: "2:00 PM-4:00 PM" },
+  ],
+  sports: [
+    { name: "Cricket Match", cost: 400, time: "10:00 AM-1:00 PM", age: 16 },
+    { name: "Badminton", cost: 250, time: "2:00 PM-4:00 PM" },
+  ],
+};
+
+function loadSessions() {
+  const event = document.getElementById("eventSelect").value;
+  const container = document.getElementById("sessionsContainer");
+
+  container.innerHTML = "";
+  totalCostSpan.textContent = "0";
+
+  if (!event) return;
+
+  eventData[event].forEach((s) => {
+    container.innerHTML += `
+      <label>
+        <input type="checkbox"
+          data-cost="${s.cost}"
+          data-time="${s.time}"
+          data-age="${s.age || ""}">
+        ${s.name} (${s.time}, ₹${s.cost}${s.age ? ", " + s.age + "+" : ""})
+      </label>
+    `;
+  });
+
+  document
+    .querySelectorAll("#sessionsContainer input")
+    .forEach((cb) => cb.addEventListener("change", calculateCost));
+}
+
 let attendees = [];
 let registeredEmails = [];
 
 const form = document.getElementById("registrationForm");
 const totalCostSpan = document.getElementById("totalCost");
-const sessionCheckboxes = document.querySelectorAll(".sessions input");
 
-sessionCheckboxes.forEach((cb) => cb.addEventListener("change", calculateCost));
+function getSessionCheckboxes() {
+  return document.querySelectorAll("#sessionsContainer input");
+}
 
 function calculateCost() {
   let total = 0;
-  sessionCheckboxes.forEach((cb) => {
-    if (cb.checked) {
-      total += parseInt(cb.dataset.cost);
-    }
+  getSessionCheckboxes().forEach((cb) => {
+    if (cb.checked) total += parseInt(cb.dataset.cost);
   });
   totalCostSpan.textContent = total;
 }
 
 function hasTimeConflict() {
   let times = [];
-  for (let cb of sessionCheckboxes) {
+  for (let cb of getSessionCheckboxes()) {
     if (cb.checked) {
       if (times.includes(cb.dataset.time)) {
         return true;
@@ -34,9 +80,15 @@ function addAttendee() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const age = parseInt(document.getElementById("age").value);
+  const event = document.getElementById("eventSelect").value;
 
   if (!name || !email || !age) {
     alert("Please fill all attendee details.");
+    return;
+  }
+
+  if (!event) {
+    alert("Please select an event.");
     return;
   }
 
@@ -49,7 +101,7 @@ function addAttendee() {
   let cost = 0;
   let times = [];
 
-  for (let cb of sessionCheckboxes) {
+  for (let cb of getSessionCheckboxes()) {
     if (cb.checked) {
       // Age validation
       if (cb.dataset.age && age < cb.dataset.age) {
@@ -79,9 +131,12 @@ function addAttendee() {
     name,
     email,
     age,
+    event,
     sessions: selectedSessions,
     cost,
   });
+
+  showDataOnPage();
 
   registeredEmails.push(email);
 
@@ -104,6 +159,7 @@ function showDataOnPage() {
         <p><strong>Name:</strong> ${a.name}</p>
         <p><strong>Email:</strong> ${a.email}</p>
         <p><strong>Age:</strong> ${a.age}</p>
+        <p><strong>Event:</strong> ${a.event}</p>
         <p><strong>Sessions:</strong></p>
         <ul>
           ${a.sessions.map((s) => `<li>${s}</li>`).join("")}
