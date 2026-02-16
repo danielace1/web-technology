@@ -1,0 +1,6 @@
+{
+  "java.project.sourcePaths": ["WEB-INF\\classes"],
+  "java.project.referencedLibraries": [
+    "d:\\web-technology\\ex-4\\apache-tomcat-9.0.115-windows-x64\\apache-tomcat-9.0.115\\lib\\servlet-api.jar"
+  ]
+}
