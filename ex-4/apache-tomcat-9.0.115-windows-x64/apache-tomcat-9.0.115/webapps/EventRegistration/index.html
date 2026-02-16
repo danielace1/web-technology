@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Registration</title>
+  </head>
+
+  <body>
+    <h2>Event Registration Form</h2>
+
+    <form action="EventRegistrationServlet" method="post">
+      Name: <input type="text" name="name" required /><br /><br />
+
+      Email: <input type="email" name="email" required /><br /><br />
+
+      Age: <input type="number" name="age" required /><br /><br />
+
+      <h3>Select Sessions:</h3>
+
+      <input type="checkbox" name="session" value="Technical Workshop" />
+      Technical Workshop (₹500, 18+)<br />
+
+      <input type="checkbox" name="session" value="Design Seminar" />
+      Design Seminar (₹400)<br />
+
+      <input type="checkbox" name="session" value="Marketing Talk" />
+      Marketing Talk (₹300)<br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+  </body>
+</html>
