@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Software Developer - Full Stack Application</title>
+  </head>
+  <body>
+    <h2>Apply for: Software Developer – Full Stack (Java + React)</h2>
+
+    <form
+      action="SoftwareDeveloperServlet"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <!-- Personal Details -->
+      <h3>Personal Details</h3>
+      Full Name: <input type="text" name="name" required /><br /><br />
+      Email: <input type="email" name="email" required /><br /><br />
+      Phone: <input type="text" name="phone" required /><br /><br />
+      GitHub Profile: <input type="url" name="github" /><br /><br />
+
+      <!-- Education -->
+      <h3>Education</h3>
+      Highest Degree:
+      <select name="degree" required>
+        <option value="">Select</option>
+        <option value="B.E CSE">B.E CSE</option>
+        <option value="B.Tech IT">B.Tech IT</option>
+        <option value="MCA">MCA</option></select
+      ><br /><br />
+
+      Graduation Year:
+      <input type="number" name="gradYear" required /><br /><br />
+
+      <!-- Skills -->
+      <h3>Technical Skills</h3>
+      <input type="checkbox" name="skills" value="Java" /> Java
+      <input type="checkbox" name="skills" value="React" /> React
+      <input type="checkbox" name="skills" value="MySQL" /> MySQL
+      <input type="checkbox" name="skills" value="Spring Boot" /> Spring Boot
+      <br /><br />
+
+      <!-- Work Experience -->
+      <h3>Experience</h3>
+      Years of Experience: <input type="number" name="experience" /><br /><br />
+
+      Previous Company: <input type="text" name="company" /><br /><br />
+
+      Start Date: <input type="date" name="startDate" /><br /><br />
+      End Date: <input type="date" name="endDate" /><br /><br />
+
+      <!-- Resume -->
+      <h3>Upload Resume</h3>
+      <input type="file" name="resume" accept=".pdf" required /><br /><br />
+
+      <input type="submit" value="Submit Application" />
+    </form>
+  </body>
+</html>
