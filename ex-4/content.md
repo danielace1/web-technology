@@ -156,13 +156,10 @@ public class EventRegistrationServlet extends HttpServlet {
 }
 ```
 
-## Learning Outcome - Understood Servlet lifecycle and request handling. -
+## Learning Outcome
 
-Implemented backend validation without using sessions. - Learned how to deploy
-and run Servlet using Apache Tomcat. - Gained knowledge about dynamic HTML
-response generation. - Practiced handling multiple form values using
-getParameterValues().
-
-```
-
-```
+- Understood Servlet lifecycle and request handling.
+- Implemented backend validation without using sessions.
+- Learned how to deploy and run Servlet using Apache Tomcat.
+- Gained knowledge about dynamic HTML response generation.
+- Practiced handling multiple form values using getParameterValues().

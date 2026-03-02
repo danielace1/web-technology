@@ -1,0 +1,14 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>SoftwareDeveloperServlet</servlet-name>
+        <servlet-class>SoftwareDeveloperServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SoftwareDeveloperServlet</servlet-name>
+        <url-pattern>/SoftwareDeveloperServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
