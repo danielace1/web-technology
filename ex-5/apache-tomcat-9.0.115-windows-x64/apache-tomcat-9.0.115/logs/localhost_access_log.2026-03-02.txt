@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [02/Mar/2026:22:03:25 +0530] "GET /EventRegistration/ HTTP/1.1" 200 905
+0:0:0:0:0:0:0:1 - - [02/Mar/2026:22:03:29 +0530] "GET /favicon.ico HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Mar/2026:22:03:33 +0530] "GET /EventRegistration/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Mar/2026:22:03:36 +0530] "GET /EventRegistration/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [02/Mar/2026:22:03:53 +0530] "GET /JobApplication/ HTTP/1.1" 200 2029

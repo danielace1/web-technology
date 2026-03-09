@@ -1,0 +1,13 @@
+<web-app>
+
+<servlet>
+    <servlet-name>SessionEventRegistrationServlet</servlet-name>
+    <servlet-class>SessionEventRegistrationServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>SessionEventRegistrationServlet</servlet-name>
+    <url-pattern>/SessionEventRegistrationServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>
