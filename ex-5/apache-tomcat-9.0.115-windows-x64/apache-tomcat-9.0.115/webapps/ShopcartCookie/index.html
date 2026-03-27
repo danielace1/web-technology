@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Online Store</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f4f4f4;
+        margin: 0;
+        text-align: center;
+      }
+
+      h1 {
+        background: #333;
+        color: white;
+        padding: 15px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        margin: 15px;
+        padding: 15px;
+        width: 220px;
+      }
+
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .price {
+        color: green;
+        font-weight: bold;
+      }
+
+      button {
+        background: #28a745;
+        border: none;
+        color: white;
+        padding: 8px 15px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background: #218838;
+      }
+
+      .cart-btn {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Simple Online Shopping Cart</h1>
+
+    <form action="CartServlet" method="post">
+      <div class="container">
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8"
+          />
+          <h3>Laptop</h3>
+          <p class="price">₹55000</p>
+          <input type="checkbox" name="product" value="Laptop" />
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+          />
+          <h3>Mobile Phone</h3>
+          <p class="price">₹25000</p>
+          <input type="checkbox" name="product" value="Mobile" />
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1580894908361-967195033215"
+          />
+          <h3>Headphones</h3>
+          <p class="price">₹3000</p>
+          <input type="checkbox" name="product" value="Headphones" />
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1587829741301-dc798b83add3"
+          />
+          <h3>Keyboard</h3>
+          <p class="price">₹1500</p>
+          <input type="checkbox" name="product" value="Keyboard" />
+        </div>
+      </div>
+
+      <br />
+
+      <input type="submit" value="Add To Cart" />
+    </form>
+  </body>
+</html>
