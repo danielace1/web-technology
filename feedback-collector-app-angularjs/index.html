@@ -1,0 +1,157 @@
+<!doctype html>
+<html ng-app="feedbackApp">
+  <head>
+    <title>Response Hub</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config (Custom Theme) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6366f1",
+              dark: "#0f172a",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+  </head>
+
+  <body
+    ng-class="isAuthPage ? 'bg-gradient-to-br from-indigo-100 via-white to-purple-100' : 'bg-gradient-to-br from-slate-100 via-white to-indigo-100'"
+  >
+    <!-- 🔥 NAVBAR -->
+    <nav
+      ng-if="!isAuthPage"
+      class="bg-white/70 backdrop-blur-xl border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-50"
+    >
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="./assets/img/Messages.png" class="w-9 h-9" />
+        <h1 class="text-xl font-semibold text-gray-800 tracking-tight">
+          Response Hub
+        </h1>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="flex items-center space-x-6 text-sm font-medium">
+        <a
+          href="#!/admin"
+          ng-if="userRole === 'admin'"
+          class="text-gray-600 hover:text-indigo-600 transition"
+        >
+          Admin
+        </a>
+
+        <a
+          href="#!/form"
+          class="text-gray-600 hover:text-indigo-600 transition"
+        >
+          Fill Form
+        </a>
+
+        <a
+          href="#!/result"
+          ng-if="userRole === 'admin'"
+          class="text-gray-600 hover:text-indigo-600 transition"
+        >
+          Results
+        </a>
+      </div>
+
+      <!-- Logout -->
+      <button
+        ng-click="logout()"
+        class="text-sm bg-red-50 text-red-500 px-4 py-1.5 rounded-lg hover:bg-red-100 transition"
+      >
+        Logout
+      </button>
+    </nav>
+
+    <!-- 🔥 HERO -->
+    <div class="max-w-6xl mx-auto mt-10 px-6">
+      <div class="relative overflow-hidden rounded-3xl shadow-lg">
+        <!-- Gradient Background -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 opacity-95"
+        ></div>
+
+        <!-- Glow effect -->
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"
+        ></div>
+
+        <!-- Content -->
+        <div class="relative p-8 text-white">
+          <h2 class="text-3xl font-bold tracking-tight">
+            Welcome to Response Hub 🚀
+          </h2>
+          <p class="text-sm mt-2 opacity-90 max-w-xl">
+            Create powerful feedback forms, collect insights, and analyze
+            responses — all in one modern platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH PAGES -->
+    <div
+      ng-if="isAuthPage"
+      class="flex items-center justify-center min-h-[100vh] px-4"
+    >
+      <div class="w-full max-w-md">
+        <div ng-view></div>
+      </div>
+    </div>
+
+    <!-- APP PAGES -->
+    <div ng-if="!isAuthPage" class="max-w-6xl mx-auto mt-8 px-6">
+      <div
+        class="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl p-6 min-h-[420px]"
+      >
+        <div ng-view></div>
+      </div>
+    </div>
+
+    <!-- 🔥 FOOTER -->
+    <footer class="text-center text-gray-400 text-xs mt-12 mb-6">
+      © 2026 Response Hub • Built with AngularJS + Firebase
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB5_1GWO3hNcUTQNwIh9xxG4YJ5tP8VGds",
+        authDomain: "feedback-collector-angularjs.firebaseapp.com",
+        projectId: "feedback-collector-angularjs",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      window.db = firebase.firestore();
+    </script>
+
+    <script src="app.js"></script>
+    <script src="routes.js"></script>
+
+    <script src="controllers/adminController.js"></script>
+    <script src="controllers/formController.js"></script>
+    <script src="controllers/resultController.js"></script>
+    <script src="controllers/loginController.js"></script>
+    <script src="controllers/signupController.js"></script>
+
+    <script src="services/dataService.js"></script>
+    <script src="services/authService.js"></script>
+  </body>
+</html>

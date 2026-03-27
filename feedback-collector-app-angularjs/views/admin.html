@@ -1,0 +1,76 @@
+<div>
+  <!-- 🔥 HEADER -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Create Feedback Form</h2>
+    <p class="text-gray-500 text-sm">Build your custom feedback questions</p>
+  </div>
+
+  <!-- 🔥 ADD QUESTION CARD -->
+  <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm mb-6">
+    <div class="grid md:grid-cols-3 gap-4">
+      <!-- Question Input -->
+      <input
+        type="text"
+        ng-model="questionText"
+        placeholder="Enter your question..."
+        class="col-span-2 px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-400"
+      />
+
+      <!-- Type Select -->
+      <select
+        ng-model="questionType"
+        class="px-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-400"
+      >
+        <option value="">Select Type</option>
+        <option value="text">Text</option>
+        <option value="rating">Rating (1-5)</option>
+        <option value="yesno">Yes / No</option>
+      </select>
+    </div>
+
+    <!-- Add Button -->
+    <button
+      ng-click="addQuestion()"
+      class="mt-4 bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition"
+    >
+      + Add Question
+    </button>
+
+    <p class="text-red-500 text-sm mt-2" ng-if="error">{{error}}</p>
+  </div>
+
+  <!-- 🔥 QUESTIONS LIST -->
+  <div>
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">Your Questions</h3>
+
+    <!-- Empty State -->
+    <div
+      ng-if="questions.length === 0"
+      class="text-gray-400 text-sm text-center py-6 border border-dashed rounded-lg"
+    >
+      No questions added yet
+    </div>
+
+    <!-- Question Cards -->
+    <div class="space-y-4">
+      <div
+        ng-repeat="q in questions track by $index"
+        class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm flex justify-between items-center hover:shadow-md transition"
+      >
+        <!-- Question Info -->
+        <div>
+          <p class="font-medium text-gray-800">{{$index + 1}}. {{q.text}}</p>
+          <span class="text-xs text-gray-500"> Type: {{q.type}} </span>
+        </div>
+
+        <!-- Delete Button -->
+        <button
+          ng-click="removeQuestion($index)"
+          class="text-red-500 hover:text-red-700 text-sm font-medium"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
