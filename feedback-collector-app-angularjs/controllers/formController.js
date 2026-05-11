@@ -5,7 +5,6 @@ app.controller("formController", function ($scope, dataService) {
   $scope.error = "";
   $scope.success = false;
 
-  // 🚀 Load questions from Firebase
   function loadQuestions() {
     dataService.getForm().then((doc) => {
       if (doc.exists) {
@@ -14,17 +13,15 @@ app.controller("formController", function ($scope, dataService) {
         $scope.questions = [];
       }
 
-      $scope.$apply(); // IMPORTANT for AngularJS
+      $scope.$apply();
     });
   }
 
   loadQuestions();
 
-  // 🚀 Submit Form
   $scope.success = false;
 
   $scope.submitForm = function () {
-    // Validation
     for (let i = 0; i < $scope.questions.length; i++) {
       if (!$scope.answers[i]) {
         $scope.error = "Please answer all questions";
@@ -39,7 +36,6 @@ app.controller("formController", function ($scope, dataService) {
     });
   };
 
-  // 🔄 Reset form
   $scope.resetForm = function () {
     $scope.success = false;
   };

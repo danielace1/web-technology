@@ -5,9 +5,7 @@ app.controller("resultController", function ($scope, dataService) {
   $scope.avgRatings = [];
   $scope.yesNoStats = [];
 
-  // 🚀 Load everything from Firebase
   function loadData() {
-    // 📥 Load questions
     dataService.getForm().then((doc) => {
       if (doc.exists) {
         $scope.questions = doc.data().questions || [];
@@ -16,7 +14,6 @@ app.controller("resultController", function ($scope, dataService) {
       $scope.$apply();
     });
 
-    // 📥 Load responses
     dataService.getResponses().then((snapshot) => {
       $scope.responses = [];
 
@@ -30,7 +27,6 @@ app.controller("resultController", function ($scope, dataService) {
     });
   }
 
-  // 🔥 Analytics Calculation
   function calculateAnalytics() {
     let ratingTotals = [];
     let ratingCounts = [];

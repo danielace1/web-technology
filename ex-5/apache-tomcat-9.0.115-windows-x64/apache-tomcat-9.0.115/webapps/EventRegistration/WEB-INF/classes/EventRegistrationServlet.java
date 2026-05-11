@@ -22,11 +22,34 @@ public class EventRegistrationServlet extends HttpServlet {
         int age = Integer.parseInt(ageStr);
         int totalCost = 0;
 
-        out.println("<html><body>");
+        out.println("<!DOCTYPE html>");
+        out.println("<html><head>");
+        out.println("<title>Registration Result</title>");
+
+        out.println("<style>");
+        out.println(
+                "body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#4facfe,#00f2fe); margin:0; padding:20px; }");
+        out.println(
+                ".card { max-width:500px; margin:auto; background:white; padding:30px; border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,0.2); }");
+        out.println("h2 { text-align:center; color:#28a745; }");
+        out.println(".error { color:#dc3545; text-align:center; font-weight:bold; }");
+        out.println("p { font-size:15px; color:#333; margin:8px 0; }");
+        out.println("ul { padding-left:20px; }");
+        out.println("li { margin-bottom:5px; }");
+        out.println(".total { font-size:18px; font-weight:bold; color:#0d6efd; margin-top:15px; }");
+        out.println(
+                ".btn { display:block; text-align:center; margin-top:20px; padding:12px; background:#0d6efd; color:white; text-decoration:none; border-radius:8px; }");
+        out.println(".btn:hover { background:#0b5ed7; }");
+        out.println("</style>");
+
+        out.println("</head><body>");
+        out.println("<div class='card'>");
 
         // 1️⃣ Validate empty sessions
         if (sessions == null) {
-            out.println("<h3>Please select at least one session.</h3>");
+            out.println("<p class='error'>⚠ Please select at least one session.</p>");
+            out.println("<a href='index.html' class='btn'>Go Back</a>");
+            out.println("</div></body></html>");
             return;
         }
 
@@ -59,20 +82,23 @@ public class EventRegistrationServlet extends HttpServlet {
         // Add email to prevent duplicate
         registeredEmails.add(email);
 
-        // 4️⃣ Display Output
-        out.println("<h2>Registration Successful</h2>");
-        out.println("<p>Name: " + name + "</p>");
-        out.println("<p>Email: " + email + "</p>");
-        out.println("<p>Age: " + age + "</p>");
+        out.println("<h2>🎉 Registration Successful</h2>");
 
-        out.println("<p>Selected Sessions:</p><ul>");
+        out.println("<p><strong>Name:</strong> " + name + "</p>");
+        out.println("<p><strong>Email:</strong> " + email + "</p>");
+        out.println("<p><strong>Age:</strong> " + age + "</p>");
+
+        out.println("<p><strong>Selected Sessions:</strong></p>");
+        out.println("<ul>");
         for (String session : sessions) {
             out.println("<li>" + session + "</li>");
         }
         out.println("</ul>");
 
-        out.println("<h3>Total Cost: ₹" + totalCost + "</h3>");
+        out.println("<p class='total'>Total Cost: ₹" + totalCost + "</p>");
 
+        out.println("<a href='index.html' class='btn'>Register Another</a>");
+        out.println("</div>");
         out.println("</body></html>");
     }
 }

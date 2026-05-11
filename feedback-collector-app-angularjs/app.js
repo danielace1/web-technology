@@ -1,7 +1,6 @@
 var app = angular.module("feedbackApp", ["ngRoute"]);
 
 app.run(function ($rootScope, $location, authService) {
-  // 🔥 Detect login page
   $rootScope.$on("$routeChangeStart", function (event, next) {
     const path = next.$$route?.originalPath;
 
@@ -9,7 +8,6 @@ app.run(function ($rootScope, $location, authService) {
     $rootScope.isAuthPage = path === "/login" || path === "/signup";
   });
 
-  // 🔥 Logout
   $rootScope.logout = function () {
     authService.logout().then(() => {
       $rootScope.userRole = null;
@@ -18,11 +16,10 @@ app.run(function ($rootScope, $location, authService) {
     });
   };
 
-  // 🔥 Auth state listener (MOVE HERE ✅)
   authService.onAuthStateChanged(function (user) {
     if (user) {
       if (!$rootScope.userRole) {
-        $rootScope.userRole = "user"; // fallback
+        $rootScope.userRole = "user";
       }
     } else {
       $location.path("/login");

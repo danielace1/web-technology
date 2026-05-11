@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE students SYSTEM "students.dtd">
+
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+
+<students>
+
+  <student>
+    <id>101</id>
+    <name>Arun Kumar</name>
+    <department>CSE</department>
+    <semester>5</semester>
+
+    <subjects>
+      <subject>
+        <name>DBMS</name>
+        <marks>85</marks>
+      </subject>
+
+      <subject>
+        <name>Web Technology</name>
+        <marks>90</marks>
+      </subject>
+    </subjects>
+  </student>
+
+  <student>
+    <id>102</id>
+    <name>Priya Sharma</name>
+    <department>IT</department>
+    <semester>6</semester>
+
+    <subjects>
+      <subject>
+        <name>Java</name>
+        <marks>88</marks>
+      </subject>
+
+      <subject>
+        <name>AI</name>
+        <marks>92</marks>
+      </subject>
+    </subjects>
+  </student>
+
+</students>
