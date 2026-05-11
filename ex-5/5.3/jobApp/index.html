@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Job Application Form</title>
+  </head>
+
+  <body>
+    <h2>Job Application Form</h2>
+
+    <form
+      action="JobApplicationServlet"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <h3>Personal Details</h3>
+
+      Full Name:
+      <input type="text" name="name" required /><br /><br />
+
+      Email:
+      <input type="email" name="email" required /><br /><br />
+
+      Phone:
+      <input type="text" name="phone" required /><br /><br />
+
+      <h3>Education</h3>
+
+      Degree:
+      <select name="degree" required>
+        <option value="">Select</option>
+        <option>B.E CSE</option>
+        <option>B.Tech IT</option>
+        <option>MCA</option></select
+      ><br /><br />
+
+      Graduation Year:
+      <input type="number" name="gradyear" required /><br /><br />
+
+      <h3>Work Experience</h3>
+
+      Company Name:
+      <input type="text" name="company" /><br /><br />
+
+      Start Date:
+      <input type="date" name="startdate" /><br /><br />
+
+      End Date:
+      <input type="date" name="enddate" /><br /><br />
+
+      <h3>Resume Upload</h3>
+
+      <input type="file" name="resume" required /><br /><br />
+
+      <input type="submit" value="Apply" />
+    </form>
+  </body>
+</html>

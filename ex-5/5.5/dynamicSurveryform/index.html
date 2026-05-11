@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dynamic Survey Form</title>
+
+    <script>
+      function autosave() {
+        let name = document.getElementById("name").value;
+        let feedback = document.getElementById("feedback").value;
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "SurveyServlet", true);
+
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded",
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById("status").innerHTML = xhr.responseText;
+          }
+        };
+
+        xhr.send("autosave=true&name=" + name + "&feedback=" + feedback);
+      }
+    </script>
+  </head>
+
+  <body>
+    <h2>Dynamic Survey Form</h2>
+
+    <form action="SurveyServlet" method="post">
+      Name:
+      <input
+        type="text"
+        name="name"
+        id="name"
+        onkeyup="autosave()"
+        required
+      /><br /><br />
+
+      Email:
+      <input type="email" name="email" required /><br /><br />
+
+      Feedback:
+      <textarea
+        name="feedback"
+        id="feedback"
+        onkeyup="autosave()"
+        required
+      ></textarea
+      ><br /><br />
+
+      Rating:
+
+      <input type="radio" name="rating" value="Excellent" /> Excellent
+
+      <input type="radio" name="rating" value="Good" /> Good
+
+      <input type="radio" name="rating" value="Average" /> Average
+
+      <br /><br />
+
+      <input type="submit" value="Submit Survey" />
+    </form>
+
+    <p id="status"></p>
+  </body>
+</html>
