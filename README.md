@@ -31,3 +31,41 @@ This repository contains various projects and experiments related to web technol
 | Sl. No | Experiment Title                                   | View                | Live                                                            |
 | ------ | -------------------------------------------------- | ------------------- | --------------------------------------------------------------- |
 | 3.4    | Event Registration Form using DHTML and JavaScript | [View](./ex-3/3.4/) | [Live](https://cs23students.github.io/web-technology/ex-3/3.4/) |
+
+## commands to compile jsp file with servlet-api.jar (5th, 6th experiment)
+
+- Create HTML/JSP and Servlet files.
+- Place servlet .java file inside: `WEB-INF/classes`
+- Compile servlet using:
+
+```bash
+  javac -cp "..\..\..\..\lib\servlet-api.jar" filename.java
+```
+
+- Start Apache Tomcat server using: `startup.bat`
+- Open browser and run:
+- http://localhost:8080/AppName
+
+## 6th experiment
+
+- Install MySQL and MySQL Workbench.
+- Create database and tables using SQL queries.
+- Store JSP files inside Tomcat webapps/AppName folder.
+- Add MySQL JDBC driver (mysql-connector.jar) inside:
+  `apache-tomcat/lib`
+- Start Tomcat server.
+- Open browser and run:
+  http://localhost:8080/AppName/login.jsp
+- JSP pages automatically compile and connect with database using JDBC.
+
+## for 7th experiment
+
+- Create:
+  students.xml
+  students.dtd
+  students.xsl
+- Store all files in the same folder.
+- Open folder in VS Code.
+- Install Live Server extension.
+- Right click students.xml → Open with Live Server
+- Browser displays formatted student details using XSL stylesheet.

@@ -1,0 +1,13 @@
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:19:36 +0530] "GET /EventRegistration/ HTTP/1.1" 200 905
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:19:38 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:19:39 +0530] "GET /favicon.ico HTTP/1.1" 200 21630
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:34:36 +0530] "GET /EventRegistration/ HTTP/1.1" 200 2610
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:34:43 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:34:43 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:34:43 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:35:56 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:38:02 +0530] "GET /EventRegistration/ HTTP/1.1" 200 4029
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:38:12 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:39:25 +0530] "POST /EventRegistration/EventRegistrationServlet HTTP/1.1" 200 225
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:44:27 +0530] "GET /EventRegistration/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Mar/2026:23:44:38 +0530] "POST /EventRegistration/EventRegistrationServlet HTTP/1.1" 200 1210

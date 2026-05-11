@@ -1,0 +1,14 @@
+<!ELEMENT students (student+)>
+
+<!ELEMENT student (id, name, department, semester, subjects)>
+
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT semester (#PCDATA)>
+
+<!ELEMENT subjects (subject+)>
+
+<!ELEMENT subject (name, marks)>
+
+<!ELEMENT marks (#PCDATA)>

@@ -5,7 +5,6 @@ app.controller(
       authService
         .login($scope.email, $scope.password)
         .then(() => {
-          // 🔥 Temporary role logic
           if ($scope.email === "admin@gmail.com") {
             $rootScope.userRole = "admin";
             $location.path("/admin");
