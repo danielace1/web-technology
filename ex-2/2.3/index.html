@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Fiesta Restaurant</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Internal CSS -->
+    <style>
+      /* Featured Section */
+      .special-dish {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 40px auto;
+        width: 80%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .special-dish img {
+        width: 250px;
+        border-radius: 12px;
+      }
+
+      .special-dish h2 {
+        color: #e63946;
+      }
+
+      /* Hover Zoom */
+      .menu-card img:hover {
+        transform: scale(1.1);
+      }
+
+      .menu-card img {
+        transition: 0.4s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Loader -->
+    <div class="loader"></div>
+
+    <!-- Navigation -->
+    <header>
+      <h1>Food Fiesta</h1>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Menu</a>
+        <a href="#">Gallery</a>
+        <a href="#">Reservation</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to Food Fiesta</h2>
+
+        <p>Delicious Food & Wonderful Experience</p>
+
+        <!-- Inline CSS -->
+        <button
+          style="
+            background: #ffb703;
+            color: black;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+          "
+        >
+          Order Now
+        </button>
+      </div>
+    </section>
+
+    <!-- Featured Dish -->
+    <section class="special-dish">
+      <h2>Chef Special</h2>
+
+      <img
+        src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
+        alt="food"
+      />
+
+      <p>Try our delicious pasta with fresh vegetables and creamy sauce.</p>
+    </section>
+
+    <!-- Food Menu -->
+    <section class="menu">
+      <h2>Our Menu</h2>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+            alt=""
+          />
+          <h3>Pizza</h3>
+          <p>₹299</p>
+        </div>
+
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1550547660-d9450f859349"
+            alt=""
+          />
+          <h3>Burger</h3>
+          <p>₹199</p>
+        </div>
+
+        <div class="menu-card">
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+            alt=""
+          />
+          <h3>Pasta</h3>
+          <p>₹249</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+      <h2>Food Gallery</h2>
+
+      <div class="gallery-grid">
+        <img
+          src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f"
+          alt=""
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+          alt=""
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061"
+          alt=""
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1529042410759-befb1204b468"
+          alt=""
+        />
+      </div>
+    </section>
+
+    <!-- Reservation Form -->
+    <section class="reservation">
+      <h2>Reserve a Table</h2>
+
+      <form>
+        <input type="text" placeholder="Enter Name" required />
+
+        <input type="email" placeholder="Enter Email" required />
+
+        <input type="date" required />
+
+        <select>
+          <option>2 Members</option>
+          <option>4 Members</option>
+          <option>6 Members</option>
+        </select>
+
+        <button type="submit">Book Table</button>
+      </form>
+    </section>
+  </body>
+</html>
