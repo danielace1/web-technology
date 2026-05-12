@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dynamic Survey Form</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        padding: 20px;
+      }
+
+      .container {
+        width: 800px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        text-align: center;
+        color: #0d6efd;
+      }
+
+      .question {
+        margin-top: 25px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 8px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      textarea,
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .error {
+        color: red;
+        font-size: 13px;
+        margin-top: 5px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 12px 20px;
+        border: none;
+        background: #0d6efd;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .progress-box {
+        width: 100%;
+        background: #ddd;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-top: 20px;
+      }
+
+      .progress-bar {
+        height: 20px;
+        width: 0%;
+        background: #198754;
+        text-align: center;
+        color: white;
+        line-height: 20px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .save-msg {
+        color: green;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Customer Feedback Survey</h2>
+
+      <div class="progress-box">
+        <div class="progress-bar" id="progressBar">0%</div>
+      </div>
+
+      <form id="surveyForm">
+        <!-- QUESTION 1 -->
+
+        <div class="question">
+          <label
+            >1. Select your favorite services (Choose minimum 1 and maximum
+            2)</label
+          ><br /><br />
+
+          <input type="checkbox" name="service" value="Delivery" /> Delivery
+          <br />
+          <input type="checkbox" name="service" value="Support" /> Support
+          <br />
+          <input type="checkbox" name="service" value="Quality" /> Quality
+          <br />
+
+          <div class="error" id="serviceError"></div>
+        </div>
+
+        <!-- QUESTION 2 -->
+
+        <div class="question">
+          <label>2. Rate our website (1 to 5)</label>
+
+          <input type="number" id="rating" min="1" max="5" />
+
+          <div class="error" id="ratingError"></div>
+        </div>
+
+        <!-- QUESTION 3 -->
+
+        <div class="question">
+          <label>3. Would you recommend us?</label><br /><br />
+
+          <input type="radio" name="recommend" value="Yes" /> Yes
+          <input type="radio" name="recommend" value="No" /> No
+
+          <div class="error" id="recommendError"></div>
+        </div>
+
+        <!-- CONDITIONAL QUESTION -->
+
+        <div class="question hidden" id="reasonBox">
+          <label>4. Why would you not recommend us?</label>
+
+          <textarea id="reason" rows="4"></textarea>
+
+          <div class="error" id="reasonError"></div>
+        </div>
+
+        <!-- QUESTION 5 -->
+
+        <div class="question">
+          <label>5. Additional Feedback</label>
+
+          <textarea id="feedback" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Submit Survey</button>
+
+        <div class="save-msg" id="saveMsg"></div>
+      </form>
+    </div>
+
+    <script>
+      const form = document.getElementById("surveyForm");
+
+      const recommendRadios = document.querySelectorAll(
+        "input[name='recommend']",
+      );
+
+      recommendRadios.forEach((radio) => {
+        radio.addEventListener("change", function () {
+          if (this.value === "No") {
+            document.getElementById("reasonBox").classList.remove("hidden");
+          } else {
+            document.getElementById("reasonBox").classList.add("hidden");
+          }
+
+          updateProgress();
+        });
+      });
+
+      function validateForm() {
+        let valid = true;
+
+        // QUESTION 1
+
+        let services = document.querySelectorAll(
+          "input[name='service']:checked",
+        );
+
+        if (services.length < 1 || services.length > 2) {
+          valid = false;
+
+          document.getElementById("serviceError").innerText =
+            "Select minimum 1 and maximum 2 services";
+        } else {
+          document.getElementById("serviceError").innerText = "";
+        }
+
+        // QUESTION 2
+
+        let rating = document.getElementById("rating").value;
+
+        if (rating === "" || rating < 1 || rating > 5) {
+          valid = false;
+
+          document.getElementById("ratingError").innerText =
+            "Rating must be between 1 and 5";
+        } else {
+          document.getElementById("ratingError").innerText = "";
+        }
+
+        // QUESTION 3
+
+        let recommend = document.querySelector(
+          "input[name='recommend']:checked",
+        );
+
+        if (!recommend) {
+          valid = false;
+
+          document.getElementById("recommendError").innerText =
+            "Please select an option";
+        } else {
+          document.getElementById("recommendError").innerText = "";
+        }
+
+        // CONDITIONAL QUESTION
+
+        if (recommend && recommend.value === "No") {
+          let reason = document.getElementById("reason").value.trim();
+
+          if (reason === "") {
+            valid = false;
+
+            document.getElementById("reasonError").innerText =
+              "Please provide reason";
+          } else {
+            document.getElementById("reasonError").innerText = "";
+          }
+        }
+
+        return valid;
+      }
+
+      function updateProgress() {
+        let total = 4;
+        let completed = 0;
+
+        // Q1
+
+        let services = document.querySelectorAll(
+          "input[name='service']:checked",
+        );
+
+        if (services.length >= 1 && services.length <= 2) {
+          completed++;
+        }
+
+        // Q2
+
+        let rating = document.getElementById("rating").value;
+
+        if (rating >= 1 && rating <= 5) {
+          completed++;
+        }
+
+        // Q3
+
+        let recommend = document.querySelector(
+          "input[name='recommend']:checked",
+        );
+
+        if (recommend) {
+          completed++;
+        }
+
+        // Q4
+
+        if (recommend && recommend.value === "No") {
+          let reason = document.getElementById("reason").value.trim();
+
+          if (reason !== "") {
+            completed++;
+          }
+        } else {
+          completed++;
+        }
+
+        let percent = (completed / total) * 100;
+
+        document.getElementById("progressBar").style.width = percent + "%";
+
+        document.getElementById("progressBar").innerText = percent + "%";
+      }
+
+      // AUTO SAVE
+
+      setInterval(function () {
+        if (validateForm()) {
+          document.getElementById("saveMsg").innerText =
+            "Responses Auto Saved Successfully";
+
+          setTimeout(() => {
+            document.getElementById("saveMsg").innerText = "";
+          }, 2000);
+        }
+      }, 10000);
+
+      // EVENTS
+
+      document.querySelectorAll("input, textarea").forEach((el) => {
+        el.addEventListener("input", updateProgress);
+        el.addEventListener("change", updateProgress);
+      });
+
+      // FINAL SUBMIT
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (validateForm()) {
+          alert("Survey Submitted Successfully!");
+        }
+      });
+    </script>
+  </body>
+</html>

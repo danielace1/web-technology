@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DHTML Registration Form Validation</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        background: #f4f6f9;
+      }
+
+      .container {
+        width: 400px;
+        margin: 50px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0d6efd;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .error {
+        color: red;
+        font-size: 13px;
+      }
+
+      .valid {
+        border-color: green;
+      }
+
+      .invalid {
+        border-color: red;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background: gray;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: not-allowed;
+        font-size: 16px;
+      }
+
+      button.enabled {
+        background: #198754;
+        cursor: pointer;
+        box-shadow: 0 0 10px #198754;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+
+      <form>
+        <label>Username</label>
+        <input type="text" id="username" onkeyup="validateUsername()" />
+        <div id="userError" class="error"></div>
+
+        <label>Email</label>
+        <input type="text" id="email" onkeyup="validateEmail()" />
+        <div id="emailError" class="error"></div>
+
+        <label>Password</label>
+        <input type="password" id="password" onkeyup="validatePassword()" />
+        <div id="passError" class="error"></div>
+
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          id="confirm"
+          onkeyup="validateConfirmPassword()"
+        />
+        <div id="confirmError" class="error"></div>
+
+        <br />
+
+        <button type="submit" id="submitBtn" disabled>Register</button>
+      </form>
+    </div>
+
+    <script>
+      let validUser = false;
+      let validEmail = false;
+      let validPass = false;
+      let validConfirm = false;
+
+      // Username Validation
+
+      function validateUsername() {
+        let username = document.getElementById("username").value;
+
+        let error = document.getElementById("userError");
+
+        let input = document.getElementById("username");
+
+        let takenUsers = ["admin", "john", "test"];
+
+        if (username.length < 4) {
+          error.innerHTML = "Username must be minimum 4 characters";
+
+          input.className = "invalid";
+
+          validUser = false;
+        } else if (takenUsers.includes(username.toLowerCase())) {
+          error.innerHTML = "Username already taken";
+
+          input.className = "invalid";
+
+          validUser = false;
+        } else {
+          error.innerHTML = "Username available";
+
+          error.style.color = "green";
+
+          input.className = "valid";
+
+          validUser = true;
+        }
+
+        enableButton();
+      }
+
+      // Email Validation
+
+      function validateEmail() {
+        let email = document.getElementById("email").value;
+
+        let error = document.getElementById("emailError");
+
+        let input = document.getElementById("email");
+
+        let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (pattern.test(email)) {
+          error.innerHTML = "Valid Email";
+
+          error.style.color = "green";
+
+          input.className = "valid";
+
+          validEmail = true;
+        } else {
+          error.innerHTML = "Invalid Email Format";
+
+          error.style.color = "red";
+
+          input.className = "invalid";
+
+          validEmail = false;
+        }
+
+        enableButton();
+      }
+
+      // Password Validation
+
+      function validatePassword() {
+        let password = document.getElementById("password").value;
+
+        let error = document.getElementById("passError");
+
+        let input = document.getElementById("password");
+
+        let pattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+
+        if (pattern.test(password)) {
+          error.innerHTML = "Strong Password";
+
+          error.style.color = "green";
+
+          input.className = "valid";
+
+          validPass = true;
+        } else {
+          error.innerHTML =
+            "Min 8 chars, 1 uppercase, 1 number, 1 special char";
+
+          error.style.color = "red";
+
+          input.className = "invalid";
+
+          validPass = false;
+        }
+
+        enableButton();
+      }
+
+      // Confirm Password Validation
+
+      function validateConfirmPassword() {
+        let password = document.getElementById("password").value;
+
+        let confirm = document.getElementById("confirm").value;
+
+        let error = document.getElementById("confirmError");
+
+        let input = document.getElementById("confirm");
+
+        if (password === confirm && confirm !== "") {
+          error.innerHTML = "Passwords Match";
+
+          error.style.color = "green";
+
+          input.className = "valid";
+
+          validConfirm = true;
+        } else {
+          error.innerHTML = "Passwords Do Not Match";
+
+          error.style.color = "red";
+
+          input.className = "invalid";
+
+          validConfirm = false;
+        }
+
+        enableButton();
+      }
+
+      // Enable Submit Button
+
+      function enableButton() {
+        let btn = document.getElementById("submitBtn");
+
+        if (validUser && validEmail && validPass && validConfirm) {
+          btn.disabled = false;
+
+          btn.classList.add("enabled");
+        } else {
+          btn.disabled = true;
+
+          btn.classList.remove("enabled");
+        }
+      }
+    </script>
+  </body>
+</html>

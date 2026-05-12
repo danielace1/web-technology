@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Form</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f5f9;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        width: 850px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        text-align: center;
+        color: #0d6efd;
+      }
+
+      .section {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+      }
+
+      .valid {
+        border-color: green;
+      }
+
+      .invalid {
+        border-color: red;
+      }
+
+      .error {
+        color: red;
+        font-size: 13px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 5px;
+        background: #0d6efd;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .remove-btn {
+        background: #dc3545;
+      }
+
+      .counter {
+        text-align: right;
+        font-size: 13px;
+        color: #555;
+      }
+
+      .tooltip {
+        display: none;
+        background: #333;
+        color: white;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Job Application Form</h2>
+
+      <form id="jobForm">
+        <!-- PERSONAL DETAILS -->
+
+        <div class="section">
+          <h3>Personal Details</h3>
+
+          <label>Full Name</label>
+          <input
+            type="text"
+            id="name"
+            onfocus="showTip('tip1')"
+            onblur="hideTip('tip1')"
+          />
+          <div class="tooltip" id="tip1">Enter your full name</div>
+          <div class="error" id="nameError"></div>
+
+          <label>Email</label>
+          <input
+            type="email"
+            id="email"
+            onfocus="showTip('tip2')"
+            onblur="hideTip('tip2')"
+          />
+          <div class="tooltip" id="tip2">Enter valid email address</div>
+          <div class="error" id="emailError"></div>
+
+          <label>Phone</label>
+          <input
+            type="text"
+            id="phone"
+            onfocus="showTip('tip3')"
+            onblur="hideTip('tip3')"
+          />
+          <div class="tooltip" id="tip3">Enter 10 digit phone number</div>
+          <div class="error" id="phoneError"></div>
+
+          <label>Career Objective</label>
+          <textarea id="objective" maxlength="200"></textarea>
+
+          <div class="counter"><span id="count">0</span>/200</div>
+        </div>
+
+        <!-- EDUCATION -->
+
+        <div class="section">
+          <h3>Education Details</h3>
+
+          <div id="educationContainer">
+            <div class="educationBlock">
+              <label>Degree</label>
+              <input type="text" class="degree" />
+
+              <label>College</label>
+              <input type="text" class="college" />
+
+              <label>Year</label>
+              <input type="number" class="year" />
+
+              <hr />
+            </div>
+          </div>
+
+          <button type="button" onclick="addEducation()">Add Education</button>
+        </div>
+
+        <!-- EXPERIENCE -->
+
+        <div class="section">
+          <h3>Work Experience</h3>
+
+          <div id="experienceContainer">
+            <div class="experienceBlock">
+              <label>Company</label>
+              <input type="text" class="company" />
+
+              <label>Start Date</label>
+              <input type="date" class="startDate" />
+
+              <label>End Date</label>
+              <input type="date" class="endDate" />
+
+              <hr />
+            </div>
+          </div>
+
+          <button type="button" onclick="addExperience()">
+            Add Experience
+          </button>
+        </div>
+
+        <!-- FILE -->
+
+        <div class="section">
+          <h3>Upload Resume</h3>
+
+          <input type="file" id="resume" />
+
+          <div class="error" id="resumeError"></div>
+        </div>
+
+        <button type="submit">Submit Application</button>
+      </form>
+    </div>
+
+    <script>
+      function showTip(id) {
+        document.getElementById(id).style.display = "block";
+      }
+
+      function hideTip(id) {
+        document.getElementById(id).style.display = "none";
+      }
+
+      document
+        .getElementById("objective")
+        .addEventListener("input", function () {
+          document.getElementById("count").innerText = this.value.length;
+        });
+
+      function addEducation() {
+        let div = document.createElement("div");
+
+        div.className = "educationBlock";
+
+        div.innerHTML = `
+
+    <label>Degree</label>
+    <input type="text" class="degree">
+
+    <label>College</label>
+    <input type="text" class="college">
+
+    <label>Year</label>
+    <input type="number" class="year">
+
+    <button type="button"
+    class="remove-btn"
+    onclick="removeSection(this)">
+    Remove
+    </button>
+
+    <hr>
+    `;
+
+        document.getElementById("educationContainer").appendChild(div);
+      }
+
+      function addExperience() {
+        let div = document.createElement("div");
+
+        div.className = "experienceBlock";
+
+        div.innerHTML = `
+
+    <label>Company</label>
+    <input type="text" class="company">
+
+    <label>Start Date</label>
+    <input type="date" class="startDate">
+
+    <label>End Date</label>
+    <input type="date" class="endDate">
+
+    <button type="button"
+    class="remove-btn"
+    onclick="removeSection(this)">
+    Remove
+    </button>
+
+    <hr>
+    `;
+
+        document.getElementById("experienceContainer").appendChild(div);
+      }
+
+      function removeSection(btn) {
+        btn.parentElement.remove();
+      }
+
+      document
+        .getElementById("jobForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let valid = true;
+
+          let name = document.getElementById("name");
+          let email = document.getElementById("email");
+          let phone = document.getElementById("phone");
+
+          let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          let phonePattern = /^[0-9]{10}$/;
+
+          if (name.value.trim() == "") {
+            valid = false;
+            document.getElementById("nameError").innerText = "Name required";
+          } else {
+            document.getElementById("nameError").innerText = "";
+          }
+
+          if (!emailPattern.test(email.value)) {
+            valid = false;
+            document.getElementById("emailError").innerText = "Invalid email";
+          } else {
+            document.getElementById("emailError").innerText = "";
+          }
+
+          if (!phonePattern.test(phone.value)) {
+            valid = false;
+            document.getElementById("phoneError").innerText = "Invalid phone";
+          } else {
+            document.getElementById("phoneError").innerText = "";
+          }
+
+          // DATE VALIDATION
+
+          let starts = document.querySelectorAll(".startDate");
+          let ends = document.querySelectorAll(".endDate");
+
+          for (let i = 0; i < starts.length; i++) {
+            let s = new Date(starts[i].value);
+            let eDate = new Date(ends[i].value);
+
+            if (ends[i].value != "" && starts[i].value != "") {
+              if (eDate < s) {
+                valid = false;
+                alert("End date must be after Start date");
+                break;
+              }
+            }
+          }
+
+          // FILE VALIDATION
+
+          let file = document.getElementById("resume").files[0];
+
+          if (file) {
+            let allowed = ["application/pdf"];
+
+            if (!allowed.includes(file.type)) {
+              valid = false;
+              document.getElementById("resumeError").innerText =
+                "Only PDF file allowed";
+            } else if (file.size > 2 * 1024 * 1024) {
+              valid = false;
+              document.getElementById("resumeError").innerText =
+                "File size must be below 2MB";
+            } else {
+              document.getElementById("resumeError").innerText = "";
+            }
+          } else {
+            valid = false;
+            document.getElementById("resumeError").innerText =
+              "Please upload resume";
+          }
+
+          if (valid) {
+            alert("Job Application Submitted Successfully!");
+          }
+        });
+    </script>
+  </body>
+</html>
